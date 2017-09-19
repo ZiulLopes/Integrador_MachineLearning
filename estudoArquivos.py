@@ -14,15 +14,15 @@ def toGray(img):
     return cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
 def dirImg(img):
-    return "cow/{}".format(img)
+    return "horse/{}".format(img)
 
 
-path = r"""C:\Projects\python_projects\MachineLearning\Integrador\cow"""
+path = r"""C:\Projects\python_projects\MachineLearning\Integrador\horse"""
 
 listImage = []
 sift = cv2.xfeatures2d.SIFT_create()
 
-describers = open(r"""C:\Projects\python_projects\MachineLearning\Integrador\describers.txt""", "a")
+describers = open(r"""C:\Projects\python_projects\MachineLearning\Integrador\describers_horse.txt""", "a")
 
 try:
     files = os.listdir(path)
