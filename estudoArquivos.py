@@ -14,10 +14,10 @@ def toGray(img):
     return cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
 def dirImg(img):
-    return "cow/{}".format(img)
+    return "horse/{}".format(img)
 
 
-path = r"""C:\Projects\python_projects\MachineLearning\Integrador\cow"""
+path = r"""C:\Projects\python_projects\MachineLearning\Integrador\horse"""
 
 listImage = []
 sift = cv2.xfeatures2d.SIFT_create()
@@ -33,11 +33,13 @@ try:
         kps, descs = sift.detectAndCompute(gray, None)
 
         count = count + 1
-        print(count)
+        #print(count)
         print(descs[0])
 
         # escrevendo descritor no arquivo
-        describers.write("{}".format(descs[0]))
-        describers.close
+        describers.write("\n{}".format(descs[0]))
 except:
     print("Error")
+
+
+describers.close
