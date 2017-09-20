@@ -14,27 +14,30 @@ def toGray(img):
     return cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
 def dirImg(img):
-    return "horse/{}".format(img)
+    return "cow/{}".format(img)
 
 
-path = r"""C:\Projects\python_projects\MachineLearning\Integrador\horse"""
+path = r"""C:\Projects\python_projects\MachineLearning\Integrador\cow"""
 
 listImage = []
 sift = cv2.xfeatures2d.SIFT_create()
 
-describers = open(r"""C:\Projects\python_projects\MachineLearning\Integrador\describers_horse.txt""", "a")
+describers = open(r"""C:\Projects\python_projects\MachineLearning\Integrador\describers_test.txt""", "a")
 
 try:
+    count = 0
     files = os.listdir(path)
 
     for image in files:
         gray = toGray(cv2.imread(dirImg(image)))
         kps, descs = sift.detectAndCompute(gray, None)
-        listImage.append("{}".format(descs[0]))
-        for line in listImage:
-            describers.write("{}".format(line))
-            print(line)
 
+        count = count + 1
+        print(count)
+        print(descs[0])
+
+        # escrevendo descritor no arquivo
+        describers.write("{}".format(descs[0]))
         describers.close
 except:
     print("Error")
