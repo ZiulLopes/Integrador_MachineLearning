@@ -1,6 +1,6 @@
 """
     Implementação MachineLearning
-    by: Luiz
+    by: Luiz Fernando Lopes
 """
 
 # import libs
