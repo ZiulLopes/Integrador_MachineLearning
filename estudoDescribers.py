@@ -4,6 +4,7 @@
 """
 
 # import libs
+
 import cv2
 import os
 import numpy as np
@@ -15,6 +16,9 @@ def toGray(img):
 
 def dirImg(img):
     return "cow_horse/{}".format(img)
+
+def MedFilt(img):
+    return cv2.medianBlur(img, 3)
 
 def HistogramHGC(image):
     rows, cols, channels = image.shape
@@ -48,13 +52,15 @@ try:
     for image in files:
         count = count + 1
         
-        features = HistogramHGC(cv2.imread(dirImg(image)))
-        print("image {}\n{}".format(image, features))
+        features = HistogramHGC(MedFilt(cv2.imread(dirImg(image))))
+        
+        #print("image {}\n{}".format(image, features), end="")
+        print("\n{}".format(features), end="")
 
         # escrevendo descritor no arquivo
-        #describers.write("\n{}".format(features))
-except:
-    print("Error")
+        describers.write("\n{}".format(features))
+except Exception as error:
+    print("Error: {}".format(error))
 
 
 describers.close
